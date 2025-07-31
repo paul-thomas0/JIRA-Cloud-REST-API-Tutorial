@@ -32,6 +32,7 @@ async function createIssue(projectKey, issueType, summary, description) {
   } catch (error) {
     console.log("error: ");
     console.log(error.response.data.errors);
+    throw error;
   }
 }
 
