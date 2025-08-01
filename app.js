@@ -223,7 +223,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  *                 example: "Implement new login button"
  *               description:
  *                 type: string
- *                 description: A detailed description of the issue
+ *                 description: A detailed description of the issue (plain text will be automatically converted to Atlassian Document Format)
  *                 example: "The login button on the main page needs to be updated to the new brand color and font."
  *     responses:
  *       '201':
