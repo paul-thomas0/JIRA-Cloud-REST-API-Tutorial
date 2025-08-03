@@ -11,13 +11,13 @@ const auth = {
 };
 
 //Gets all issues in a particular project using the Jira Cloud REST API
-async function getIssues() {
+async function getIssues(projectId) {
   try {
     const baseUrl = "https://" + domain + ".atlassian.net";
 
     const config = {
       method: "get",
-      url: baseUrl + "/rest/api/3/search",
+      url: baseUrl + "/rest/api/3/search?jql=project=" + projectId,
       headers: { "Content-Type": "application/json" },
       auth: auth,
     };

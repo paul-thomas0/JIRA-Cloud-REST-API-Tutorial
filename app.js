@@ -289,7 +289,15 @@ app.post("/issues", async (req, res) => {
  *   get:
  *     summary: Retrieve all issues
  *     tags: [Issues]
- *     description: Retrieves a list of all issues from JIRA using the search endpoint
+ *     description: Retrieves a list of all issues from JIRA using the search endpoint. Optionally filter by project ID.
+ *     parameters:
+ *       - in: query
+ *         name: projectId
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Project ID or key to filter issues by specific project
+ *         example: "PROJ"
  *     responses:
  *       '200':
  *         description: Successfully retrieved issues
@@ -320,7 +328,8 @@ app.post("/issues", async (req, res) => {
  */
 app.get("/issues", async (req, res) => {
   try {
-    const issues = await getIssues();
+    const { projectId } = req.query;
+    const issues = await getIssues(projectId);
     res.json(issues);
   } catch (error) {
     console.error("Error getting issues:", error);
